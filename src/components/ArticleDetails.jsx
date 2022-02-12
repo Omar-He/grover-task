@@ -51,8 +51,8 @@ const ArticleDetails = () => {
     <>
       {!loading && (
         <div>
-          <Button variant="outlined" onClick={goToList}>
-            <ArrowLeftIcon fontSize="large" />
+          <Button variant="outlined" onClick={goToList} size="small">
+            <ArrowLeftIcon fontSize="small" />
             Articles List
           </Button>
           <Box mt={4}>
@@ -71,9 +71,14 @@ const ArticleDetails = () => {
             </Typography>
           </Box>
           <Box mt={6} display="flex" justifyContent="flex-end">
-            <Button variant="outlined" onClick={readMore}>
+            <Button
+              variant="contained"
+              color="primary"
+              onClick={readMore}
+              size="small"
+            >
               Read full article
-              <ArrowRightIcon fontSize="large" />
+              <ArrowRightIcon fontSize="small" />
             </Button>
           </Box>
         </div>

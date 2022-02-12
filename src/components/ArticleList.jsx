@@ -38,13 +38,13 @@ const columns = [
 export default function ArticleList() {
   const classes = styles();
   const context = useAppContext();
-  const [page, setPage] = React.useState(0);
   const { searchTerm } = context.state;
   const [articles, setArticles] = useState([]);
   const [count, setCount] = useState(0);
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
   const [searchParams] = useSearchParams();
+  const { page } = context.state;
 
   const getInfo = async () => {
     const res = await getArticles(page, searchTerm);
@@ -59,7 +59,7 @@ export default function ArticleList() {
   useEffect(() => {
     const initialParams = Object.fromEntries([...searchParams]);
     if (Object.keys(initialParams).length > 0) {
-      setPage(initialParams.page);
+      context.setPage(initialParams.page);
       context.updateSearchTerm(initialParams.search || "");
     }
   }, []);
@@ -79,7 +79,7 @@ export default function ArticleList() {
   }, [page, searchTerm]);
 
   const handleChangePage = (event, newPage) => {
-    setPage(newPage);
+    context.setPage(newPage);
   };
 
   const viewArticle = (article) => {
