@@ -12,6 +12,7 @@ import { useAppContext } from "../context/state";
 import Backdrop from "./Backdrop";
 import { Button } from "@mui/material";
 import { makeStyles } from "@mui/styles";
+import { Link, useNavigate } from "react-router-dom";
 
 const styles = makeStyles((theme) => ({
   root: {
@@ -36,6 +37,7 @@ export default function ArticleList() {
   const [articles, setArticles] = useState([]);
   const [count, setCount] = useState(0);
   const [loading, setLoading] = useState(false);
+  let navigate = useNavigate();
 
   const getInfo = async () => {
     const res = await getArticles(page, searchTerm);
@@ -54,6 +56,12 @@ export default function ArticleList() {
 
   const handleChangePage = (event, newPage) => {
     setPage(newPage);
+  };
+
+  const viewArticle = (article) => {
+    const idLink = article.split("/");
+    const id = idLink[idLink.length - 1];
+    navigate(`/articles/${id}`);
   };
 
   return (
@@ -75,12 +83,14 @@ export default function ArticleList() {
           </TableHead>
           <TableBody>
             <Backdrop open={loading} />
-            {articles.map((row) => {
+            {articles.map((row, index) => {
               return (
                 <TableRow hover role="checkbox" tabIndex={-1} key={row._id}>
                   <TableCell>{row?.headline?.main || "-"}</TableCell>
                   <TableCell align="center">
-                    <Button size="small">View</Button>
+                    <Button size="small" onClick={() => viewArticle(row._id)}>
+                      View
+                    </Button>
                   </TableCell>
                 </TableRow>
               );

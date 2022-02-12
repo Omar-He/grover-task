@@ -1,19 +1,16 @@
 import React from "react";
-import Container from "@mui/material/Container";
-import Box from "@mui/material/Box";
-import ArticleList from "./components/ArticleList";
-import AppBar from "./components/AppBar";
+import { Routes, Route, Link } from "react-router-dom";
 import { AppWrapper } from "../src/context/state";
+import ArticlePage from "./pages/ArticlePage";
+import HomePage from "./pages/HomePage";
 
 export default function App() {
   return (
     <AppWrapper>
-      <AppBar />
-      <Container maxWidth="md">
-        <Box sx={{ my: 4 }}>
-          <ArticleList />
-        </Box>
-      </Container>
+      <Routes>
+        <Route path="/" index element={<HomePage />} />
+        <Route path="/articles/:id" element={<ArticlePage />} />
+      </Routes>
     </AppWrapper>
   );
 }
