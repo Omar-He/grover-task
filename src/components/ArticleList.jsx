@@ -37,7 +37,7 @@ export default function ArticleList() {
   const [articles, setArticles] = useState([]);
   const [count, setCount] = useState(0);
   const [loading, setLoading] = useState(false);
-  let navigate = useNavigate();
+  const navigate = useNavigate();
 
   const getInfo = async () => {
     const res = await getArticles(page, searchTerm);
@@ -74,7 +74,7 @@ export default function ArticleList() {
                 <TableCell
                   key={column.id}
                   align={column.align}
-                  style={{ minWidth: column.minWidth }}
+                  style={{ minWidth: column.minWidth, fontSize: "16px" }}
                 >
                   {column.label}
                 </TableCell>
@@ -86,7 +86,9 @@ export default function ArticleList() {
             {articles.map((row, index) => {
               return (
                 <TableRow hover role="checkbox" tabIndex={-1} key={row._id}>
-                  <TableCell>{row?.headline?.main || "-"}</TableCell>
+                  <TableCell style={{ fontSize: "16px" }}>
+                    {row?.headline?.main || "-"}
+                  </TableCell>
                   <TableCell align="center">
                     <Button size="small" onClick={() => viewArticle(row._id)}>
                       View
