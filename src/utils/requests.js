@@ -1,6 +1,6 @@
 export async function getArticles(page, keyword) {
   const req = fetch(
-    `https://api.nytimes.com/svc/search/v2/articlesearch.json?api-key=HvMrEU0KA419DJ9NCW4BVj7n9tzQWUfi&page=${page}&q=${keyword}&sort=newest&limit=15`
+    `https://api.nytimes.com/svc/search/v2/articlesearch.json?api-key=HvMrEU0KA419DJ9NCW4BVj7n9tzQWUfi&page=${page}&q=${keyword}&sort=newest`
   );
   const res = await req;
   return res.json();

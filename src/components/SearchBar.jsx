@@ -8,7 +8,8 @@ import { useAppContext } from "../context/state";
 
 export default function SearchBar() {
   const context = useAppContext();
-  const [keyword, setKeyword] = useState("");
+  const initialValue = context?.state?.searchTerm || "";
+  const [keyword, setKeyword] = useState(initialValue);
   const debouncedSearchTerm = useDebounce(keyword, 500);
 
   useEffect(() => {

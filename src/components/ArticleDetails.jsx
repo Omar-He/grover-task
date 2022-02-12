@@ -1,12 +1,11 @@
 import React, { useState, useEffect } from "react";
 import { getOneArticles } from "../utils/requests";
-import { useParams } from "react-router-dom";
 import Backdrop from "../components/Backdrop";
 import { Button, Typography, Box } from "@mui/material";
 import ArrowLeftIcon from "@mui/icons-material/ArrowLeft";
 import ArrowRightIcon from "@mui/icons-material/ArrowRight";
 import { makeStyles } from "@mui/styles";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import dateFormatter from "../utils/dateFormatter";
 
 const styles = makeStyles((theme) => ({

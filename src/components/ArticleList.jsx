@@ -12,7 +12,13 @@ import { useAppContext } from "../context/state";
 import Backdrop from "./Backdrop";
 import { Button } from "@mui/material";
 import { makeStyles } from "@mui/styles";
-import { Link, useNavigate } from "react-router-dom";
+import {
+  useParams,
+  useNavigate,
+  createSearchParams,
+  useSearchParams,
+} from "react-router-dom";
+import { removeFalsyValue } from "../utils/filterParams";
 
 const styles = makeStyles((theme) => ({
   root: {
@@ -38,6 +44,7 @@ export default function ArticleList() {
   const [count, setCount] = useState(0);
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
+  const [searchParams] = useSearchParams();
 
   const getInfo = async () => {
     const res = await getArticles(page, searchTerm);
@@ -50,7 +57,24 @@ export default function ArticleList() {
   };
 
   useEffect(() => {
+    const initialParams = Object.fromEntries([...searchParams]);
+    if (Object.keys(initialParams).length > 0) {
+      setPage(initialParams.page);
+      context.updateSearchTerm(initialParams.search || "");
+    }
+  }, []);
+
+  useEffect(() => {
     setLoading(true);
+    const params = removeFalsyValue({
+      search: searchTerm,
+      page: page,
+    });
+    navigate({
+      pathname: `/articles`,
+      search: `?${createSearchParams(params)}`,
+    });
+
     getInfo();
   }, [page, searchTerm]);
 
