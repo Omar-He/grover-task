@@ -9,7 +9,7 @@ const HomePage = () => {
   return (
     <>
       <AppBar />
-      <Container maxWidth="md">
+      <Container maxWidth="md" id="container">
         <Box sx={{ my: 10 }}>
           <SearchBar />
           <ArticleList />

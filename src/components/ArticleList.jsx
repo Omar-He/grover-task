@@ -109,7 +109,13 @@ export default function ArticleList() {
             <Backdrop open={loading} />
             {articles.map((row, index) => {
               return (
-                <TableRow hover role="checkbox" tabIndex={-1} key={row._id}>
+                <TableRow
+                  id="article-row"
+                  hover
+                  role="checkbox"
+                  tabIndex={-1}
+                  key={row._id}
+                >
                   <TableCell style={{ fontSize: "16px" }}>
                     {row?.headline?.main || "-"}
                   </TableCell>

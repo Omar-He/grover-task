@@ -51,7 +51,12 @@ const ArticleDetails = () => {
     <>
       {!loading && (
         <div>
-          <Button variant="outlined" onClick={goToList} size="small">
+          <Button
+            variant="outlined"
+            onClick={goToList}
+            size="small"
+            id="back-list"
+          >
             <ArrowLeftIcon fontSize="small" />
             Articles List
           </Button>
@@ -70,7 +75,12 @@ const ArticleDetails = () => {
               {articleInfo?.snippet}
             </Typography>
           </Box>
-          <Box mt={6} display="flex" justifyContent="flex-end">
+          <Box
+            mt={6}
+            display="flex"
+            justifyContent="flex-end"
+            id="full-details"
+          >
             <Button
               variant="contained"
               color="primary"
