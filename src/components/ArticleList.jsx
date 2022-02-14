@@ -13,7 +13,6 @@ import Backdrop from "./Backdrop";
 import { Button } from "@mui/material";
 import { makeStyles } from "@mui/styles";
 import {
-  useParams,
   useNavigate,
   createSearchParams,
   useSearchParams,
@@ -62,6 +61,7 @@ export default function ArticleList() {
       context.setPage(initialParams.page);
       context.updateSearchTerm(initialParams.search || "");
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   useEffect(() => {
@@ -76,6 +76,7 @@ export default function ArticleList() {
     });
 
     getInfo();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [page, searchTerm]);
 
   const handleChangePage = (event, newPage) => {

@@ -14,6 +14,7 @@ export default function SearchBar() {
 
   useEffect(() => {
     context.updateSearchTerm(keyword);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [debouncedSearchTerm]);
 
   const onInputChange = (value) => {

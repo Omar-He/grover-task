@@ -4,20 +4,8 @@ import Backdrop from "../components/Backdrop";
 import { Button, Typography, Box } from "@mui/material";
 import ArrowLeftIcon from "@mui/icons-material/ArrowLeft";
 import ArrowRightIcon from "@mui/icons-material/ArrowRight";
-import { makeStyles } from "@mui/styles";
 import { useNavigate, useParams } from "react-router-dom";
 import dateFormatter from "../utils/dateFormatter";
-
-const styles = makeStyles((theme) => ({
-  root: {
-    boxShadow:
-      "0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1)",
-    "& .MuiTableCell-head": {
-      backgroundColor: theme.palette.primary.main,
-      color: theme.palette.primary.font,
-    },
-  },
-}));
 
 const ArticleDetails = () => {
   const [articleInfo, setArticleInfo] = useState({});
@@ -36,6 +24,7 @@ const ArticleDetails = () => {
     if (id) {
       getArticleInfo();
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [id]);
 
   const readMore = () => {
